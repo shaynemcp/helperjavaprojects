@@ -38,11 +38,16 @@ public class Weight {
         if (ounces > OUNCES_IN_A_POUND) {
             this.pounds = pounds + 1;
             this.ounces = ounces - OUNCES_IN_A_POUND;
-        }
-        System.out.println("OKAY!");
-        //use this to see result of "normalized" weight
-//        System.out.println(pounds + " " + ounces);
-    }
+
+            //use this to see result of "normalized" weight
+//            System.out.println(pounds + " lbs " + ounces + "oz");
+        } else {
+            this.pounds = pounds;
+            this.ounces = ounces;
+
+//            System.out.println("OKAY!");
+//            System.out.println(pounds + " lbs " + ounces + "oz");
+        }}
 
     public boolean lessThan(Weight weight) {
 
@@ -80,9 +85,8 @@ public class Weight {
     /* TO STRING */
     @Override
     public String toString() {
-        return "Weight{" +
-                "pounds=" + pounds +
-                ", ounces=" + ounces +
-                '}';
+        return "weight is " + pounds +
+                " pounds, " + + ounces +
+                " ounces" ;
     }
 }

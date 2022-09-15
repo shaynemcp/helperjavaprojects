@@ -18,18 +18,22 @@ public class Project1 {
     private Weight findMinimum(Weight w1, Weight w2, Weight w3) {
         Weight minWeight;
 
-        ArrayList<Weight> minList = new ArrayList<Weight>() ;
+        ArrayList<Weight> minList = new ArrayList<>() ;
         minList.add(w1);
         minList.add(w2);
         minList.add(w3);
 
-        Collections.sort(minList, new Comparator<Weight>() {
-            @Override
-            public int compare(Weight o1, Weight o2) {
-                return 0;
-            }
-        });
+        for (int i = 0; i < minList.size(); i++) {
+            for (int j = i + 1; j < minList.size(); j++) {
+                Weight temp1 = null;
 
+                if (minList.get(i).getPounds() > minList.get(j).getPounds()) {
+                    temp1 = minList.get(i);
+                    minList.set(i, minList.get(j));
+                    minList.set(j, temp1);
+                }
+            }
+        }
         minWeight = minList.get(0);
 
 //        System.out.println(minList);
@@ -45,14 +49,19 @@ public class Project1 {
         maxList.add(w2);
         maxList.add(w3);
 
-        Collections.sort(maxList, new Comparator<Weight>() {
-            @Override
-            public int compare(Weight o1, Weight o2) {
-                return 0;
-            }
-        });
+        for (int i = 0; i < maxList.size(); i++) {
+            for (int j = i + 1; j < maxList.size(); j++) {
+                Weight temp1 = null;
 
-        maxWeight = maxList.get(2);
+                if (maxList.get(i).getPounds() > maxList.get(j).getPounds()) {
+                    temp1 = maxList.get(i);
+                    maxList.set(i, maxList.get(j));
+                    maxList.set(j, temp1);
+                }
+            }
+        }
+
+        maxWeight = maxList.get(maxList.size()-1);
 
 //        System.out.println(maxList);
 
@@ -62,10 +71,11 @@ public class Project1 {
     private Weight findAverage(Weight w1, Weight w2, Weight w3) {
 
         Weight totalWeight = w3.addTo(w2.addTo(w1));
-        int oz = (int) (totalWeight.getOunces() / 3);
-        double lbs = totalWeight.getPounds() / 3;
 
-        Weight avgWeight = new Weight(oz, lbs);
+        double oz = (int) (totalWeight.getOunces() / 3);
+        int lbs = totalWeight.getPounds() / 3;
+
+        Weight avgWeight = new Weight(lbs, oz);
 
 
         System.out.println("The average " + avgWeight.toString());
