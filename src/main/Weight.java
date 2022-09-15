@@ -12,9 +12,10 @@ public class Weight {
     private double ounces;
 
     public Weight (int pounds, double ounces){
-//        normalize();
             this.pounds = pounds;
             this.ounces = ounces;
+
+        normalize();
     }
 
     protected double toOunces() {
@@ -34,10 +35,13 @@ public class Weight {
     }
 
     private void normalize() {
-        if (ounces < OUNCES_IN_A_POUND) {
-            System.out.println("OKAY!");
+        if (ounces > OUNCES_IN_A_POUND) {
+            this.pounds = pounds + 1;
+            this.ounces = ounces - OUNCES_IN_A_POUND;
         }
-        throw new RuntimeException("This is not a vaild entry for ounces, try again");
+        System.out.println("OKAY!");
+        //use this to see result of "normalized" weight
+//        System.out.println(pounds + " " + ounces);
     }
 
     public boolean lessThan(Weight weight) {

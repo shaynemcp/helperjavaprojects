@@ -6,8 +6,7 @@ public class Project1 {
 
     public void projectRunner() {
         Weight weight1 = new Weight(11, 3);
-        Weight weight2 = new Weight(7, 20); // Hint: normalize method should be
-//        used to translate into 8 pounds and 4 ounces
+        Weight weight2 = new Weight(7, 20); // Hint: normalize method should be used to translate into 8 pounds and 4 ounces
         Weight weight3 = new Weight(14, 6);
 
        Weight max =  findMaximum(weight1, weight2, weight3);
